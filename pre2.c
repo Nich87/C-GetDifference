@@ -6,7 +6,7 @@ const int month_last[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 int main(void) {
 	
 	int year[2] = { 2000,2021 };
-    int month[2] = { 1,12 };
+    	int month[2] = { 1,12 };
 	int day[2] = { 31,31 };
 	
 	int getDay = (year[1] - year[0]) * 365;
