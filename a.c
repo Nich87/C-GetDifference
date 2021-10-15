@@ -40,7 +40,7 @@ int main(void){
 	int now = 365 * year[1];
 	//閏年ならプラスする
 	while (year[1] == 0){
-		if (check_year2(year[1])){
+		if (check_year(year[1])){
 			now++;
 			year[1]--;
 		}
