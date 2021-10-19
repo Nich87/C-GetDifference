@@ -13,33 +13,43 @@ int main(void) {
 	const int day[] = { 14, 15 };
 	*/
 
-	int year[] = {0,0};
-	int month[] = {0,0};
-	int day[] = {0,0};
-	char YN[] = "";
+	int year[] = { 0, 0 };
+	int month[] = { 0, 0 };
+	int day[] = { 0, 0 };
+	
 
-	inputs:
-	//do-whileで個別範囲指定すると安全(1-12月まで等)
-	printf("誕生年(西暦)を入力:");
-	scanf("%d", &year[0]);
-	printf("\n誕生月を入力:");
-	scanf("%d", &month[0]);
-	printf("\n誕生日を入力:");
-	scanf("%d", &day[0]);
-	printf("\n指定する年を入力:");
-	scanf("%d", &year[1]);
-	printf("\n指定する月を入力:");
-	scanf("%d", &month[1]);
-	printf("\n指定する日を入力:");
-	scanf("%d", &day[1]);
-	printf("\n\x1b[4m%d年%d月%d日\x1b[0mから\x1b[4m%d年%d月%d日\x1b[0mまでの計算をしますか？(Y/N):", year[0], month[0], day[0], year[1], month[1], day[1]);
+//inputs:
+	while (1){
+		char YN[] = { "" };
+		//do-whileで個別範囲指定すると安全(1-12月まで等)
+		printf("誕生年(西暦)を入力:");
+		scanf("%d", &year[0]);
+		printf("\n誕生月を入力:");
+		scanf("%d", &month[0]);
+		printf("\n誕生日を入力:");
+		scanf("%d", &day[0]);
+		printf("\n指定する年を入力:");
+		scanf("%d", &year[1]);
+		printf("\n指定する月を入力:");
+		scanf("%d", &month[1]);
+		printf("\n指定する日を入力:");
+		scanf("%d", &day[1]);
+		printf("\n\x1b[4m%d年%d月%d日\x1b[0mから\x1b[4m%d年%d月%d日\x1b[0mまでの計算をしますか？(Y/N):", year[0], month[0], day[0], year[1], month[1], day[1]);
 
+		while ('Y' != YN[0] && 'N' != YN[0]){
+			scanf("%c", &YN[0]);
+			if (YN[0] == 'Y') break;
+			else if (YN[0] == 'N') continue;
+		}
+		if (YN[0] == 'Y') break;
+	}
+	/*
 	do {
 		scanf("%c", &YN[0]);
 		if (YN[0] == 'Y') break;
-		else if(YN[0] == 'N') goto inputs;
+		else if (YN[0] == 'N') goto inputs;
 	} while ('Y' != YN[0] && 'N' != YN[0]);
-
+	*/
 
 
 	// 閏年を考慮せずにyear[0]年1月1日からyear[1]年1月1日までの日数を代入
@@ -74,11 +84,11 @@ int main(void) {
 }
 
 /*
- *	 グレゴリオ暦が採用された1582年10月15日以降のみ対応
- *	 1582年10月4日まで - ユリウス暦
- *	 1582年10月5日から - グレゴリオ暦
- *	 chech_year関数を少し変えれば、1582年10月4日以前にも対応可能
- */
+*	 グレゴリオ暦が採用された1582年10月15日以降のみ対応
+*	 1582年10月4日まで - ユリウス暦
+*	 1582年10月5日から - グレゴリオ暦
+*	 chech_year関数を少し変えれば、1582年10月4日以前にも対応可能
+*/
 
 int check_year(int year) {
 	if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) return 1;
